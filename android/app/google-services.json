@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "391684479095",
+    "project_id": "veggieshop-11ae3",
+    "storage_bucket": "veggieshop-11ae3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:391684479095:android:4ceb425659681c9565ce72",
+        "android_client_info": {
+          "package_name": "com.example.aplikasiveggieshop"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvBQgQRsiAGnzLmBNnn1j_1xW_p1kjgdM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
