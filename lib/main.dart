@@ -31,12 +31,12 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
       ),
-      initialRoute: '/', // Rute awal
+      initialRoute: '/', 
       routes: {
-        '/': (context) => RegisterPage(), // Halaman awal (LauncherPage)
-        '/register': (context) => RegisterPage(), // Rute ke halaman login
+        '/': (context) => RegisterPage(), 
+        '/register': (context) => RegisterPage(), 
         '/landingPage': (context) =>
-            LandingPage(), // Rute ke halaman LandingPage
+            LandingPage(), 
       },
     );
   }

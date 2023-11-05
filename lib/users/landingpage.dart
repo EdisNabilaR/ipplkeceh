@@ -36,7 +36,7 @@ class _LandingPageState extends State<LandingPage> {
           BottomNavigationBarItem(
             activeIcon: Icon(
               Icons.home,
-              color: Colors.green, // Warna hijau tua
+              color: Colors.green, 
             ),
             icon: Icon(
               Icons.home_outlined,

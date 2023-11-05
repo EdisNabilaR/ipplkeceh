@@ -1,7 +1,8 @@
-import 'package:aplikasiverggieshop/constans.dart';
+import 'package:aplikasiverggieshop/users/register.dart';
+import 'package:flutter/material.dart';
 import 'package:aplikasiverggieshop/users/depanpage.dart';
 import 'package:aplikasiverggieshop/users/kategoripage.dart';
-import 'package:flutter/material.dart';
+import 'package:aplikasiverggieshop/users/akunpage.dart';
 
 class Beranda extends StatefulWidget {
   @override
@@ -29,6 +30,21 @@ class _BerandaState extends State<Beranda> with SingleTickerProviderStateMixin {
     super.dispose();
   }
 
+  void _onMenuItemSelected(String value) {
+    if (value == 'ubah_akun') {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => AkunPage()),
+      );
+    } else if (value == 'logout') {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+            builder: (context) => RegisterPage()), 
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +56,7 @@ class _BerandaState extends State<Beranda> with SingleTickerProviderStateMixin {
           style: TextStyle(fontSize: 15),
           decoration: InputDecoration(
             hintText: 'Search',
-            prefixIcon: Icon(Icons.search, color: Palette.black),
+            prefixIcon: Icon(Icons.search, color: Colors.black),
             contentPadding: const EdgeInsets.symmetric(vertical: 10.0),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
@@ -50,10 +66,23 @@ class _BerandaState extends State<Beranda> with SingleTickerProviderStateMixin {
             filled: true,
           ),
         ),
+        actions: [
+          PopupMenuButton<String>(
+            onSelected: _onMenuItemSelected,
+            itemBuilder: (BuildContext context) {
+              return {'Ubah Profil', 'Logout'}.map((String choice) {
+                return PopupMenuItem<String>(
+                  value: choice,
+                  child: Text(choice),
+                );
+              }).toList();
+            },
+          ),
+        ],
         bottom: TabBar(
           controller: _tabController,
-          indicatorColor: Palette.black,
-          labelColor: Palette.black,
+          indicatorColor: Colors.black,
+          labelColor: Colors.black,
           unselectedLabelColor: const Color.fromARGB(255, 83, 83, 83),
           labelPadding: EdgeInsets.all(0),
           tabs: [
