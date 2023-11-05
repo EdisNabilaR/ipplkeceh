@@ -13,10 +13,10 @@ class LandingPage extends StatefulWidget {
 class _LandingPageState extends State<LandingPage> {
   int _bottomNavCurrentIndex = 0;
   List<Widget> container = [
-    new Beranda(),
-    new KeranjangPage(),
-    new AkunPage(),
-    new TambahprodukPage()
+    Beranda(),
+    KeranjangPage(),
+    AkunPage(),
+    TambahprodukPage()
   ];
 
   @override
@@ -24,7 +24,7 @@ class _LandingPageState extends State<LandingPage> {
     return Scaffold(
       body: container[_bottomNavCurrentIndex],
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Palette.bg1,
+        selectedItemColor: Colors.green, // Warna hijau tua
         type: BottomNavigationBarType.fixed,
         onTap: (index) {
           setState(() {
@@ -34,47 +34,49 @@ class _LandingPageState extends State<LandingPage> {
         currentIndex: _bottomNavCurrentIndex,
         items: [
           BottomNavigationBarItem(
-            activeIcon: new Icon(
+            activeIcon: Icon(
               Icons.home,
-              color: Palette.bg1,
+              color: Colors.green, // Warna hijau tua
             ),
-            icon: new Icon(
+            icon: Icon(
               Icons.home_outlined,
               color: Colors.grey,
             ),
             label: 'Beranda',
           ),
           BottomNavigationBarItem(
-            activeIcon: new Icon(
+            activeIcon: Icon(
               Icons.shopping_cart,
-              color: Palette.bg1,
+              color: Colors.green, // Warna hijau tua
             ),
-            icon: new Icon(
+            icon: Icon(
               Icons.shopping_cart_outlined,
               color: Colors.grey,
             ),
             label: 'Keranjang',
           ),
           BottomNavigationBarItem(
-              activeIcon: new Icon(
-                Icons.person,
-                color: Palette.bg1,
-              ),
-              icon: new Icon(
-                Icons.person_outline,
-                color: Colors.grey,
-              ),
-              label: 'Profil'),
+            activeIcon: Icon(
+              Icons.person,
+              color: Colors.green, // Warna hijau tua
+            ),
+            icon: Icon(
+              Icons.person_outline,
+              color: Colors.grey,
+            ),
+            label: 'Profil',
+          ),
           BottomNavigationBarItem(
-              activeIcon: new Icon(
-                Icons.plus_one,
-                color: Palette.bg1,
-              ),
-              icon: new Icon(
-                Icons.plus_one_outlined,
-                color: Colors.grey,
-              ),
-              label: 'Produk'),
+            activeIcon: Icon(
+              Icons.plus_one,
+              color: Colors.green, // Warna hijau tua
+            ),
+            icon: Icon(
+              Icons.plus_one_outlined,
+              color: Colors.grey,
+            ),
+            label: 'Produk',
+          ),
         ],
       ),
     );

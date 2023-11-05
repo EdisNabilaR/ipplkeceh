@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AkunPage extends StatefulWidget {
   @override
@@ -10,17 +11,44 @@ class _AkunPageState extends State<AkunPage> {
   TextEditingController _emailController = TextEditingController();
   TextEditingController _alamatController = TextEditingController();
 
-  void _simpanProfil() {
-    String nama = _namaController.text;
-    String email = _emailController.text;
-    String alamat = _alamatController.text;
+  bool isEditing = false;
 
+  @override
+  void initState() {
+    super.initState();
+    // Load data profil dari SharedPreferences saat halaman dimuat
+    loadProfilData();
+  }
+
+  void loadProfilData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _namaController.text = prefs.getString('nama') ?? '';
+      _emailController.text = prefs.getString('email') ?? '';
+      _alamatController.text = prefs.getString('alamat') ?? '';
+    });
+  }
+
+  void _simpanProfil() async {
+    // Simpan data profil ke SharedPreferences
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('nama', _namaController.text);
+    prefs.setString('email', _emailController.text);
+    prefs.setString('alamat', _alamatController.text);
+
+    // Tampilkan pesan Snackbar bahwa profil telah disimpan
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
-            'Profil disimpan: Nama: $nama, Email: $email, Alamat: $alamat'),
+          'Profil disimpan: Nama: ${_namaController.text}, Email: ${_emailController.text}, Alamat: ${_alamatController.text}',
+        ),
       ),
     );
+
+    // Keluar dari mode pengeditan
+    setState(() {
+      isEditing = false;
+    });
   }
 
   @override
@@ -29,6 +57,13 @@ class _AkunPageState extends State<AkunPage> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text('Profil'),
+        actions: [
+          if (isEditing)
+            IconButton(
+              onPressed: _simpanProfil,
+              icon: Icon(Icons.save),
+            ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -41,6 +76,7 @@ class _AkunPageState extends State<AkunPage> {
               decoration: InputDecoration(
                 hintText: 'Masukkan nama Anda',
               ),
+              enabled: isEditing,
             ),
             SizedBox(height: 16),
             Text('Email:'),
@@ -49,6 +85,7 @@ class _AkunPageState extends State<AkunPage> {
               decoration: InputDecoration(
                 hintText: 'Masukkan alamat email Anda',
               ),
+              enabled: isEditing,
             ),
             SizedBox(height: 16),
             Text('Alamat:'),
@@ -57,23 +94,20 @@ class _AkunPageState extends State<AkunPage> {
               decoration: InputDecoration(
                 hintText: 'Masukkan alamat Anda',
               ),
+              enabled: isEditing,
             ),
             SizedBox(height: 32),
             ElevatedButton(
-              onPressed: _simpanProfil,
-              child: Text('Simpan Profil'),
+              onPressed: () {
+                setState(() {
+                  isEditing = !isEditing;
+                });
+              },
+              child: Text(isEditing ? 'Batal' : 'Ubah Profil'),
             ),
           ],
         ),
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    _namaController.dispose();
-    _emailController.dispose();
-    _alamatController.dispose();
-    super.dispose();
   }
 }

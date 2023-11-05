@@ -16,6 +16,26 @@ class _RegisterPageState extends State<RegisterPage> {
 
   Future<void> _register() async {
     try {
+      if (passwordController.text.length < 8) {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Kata Sandi Kurang dari 8 Karakter'),
+              actions: <Widget>[
+                TextButton(
+                  child: Text('OK'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );
+        return; 
+      }
+
       await _auth.createUserWithEmailAndPassword(
         email: emailController.text,
         password: passwordController.text,

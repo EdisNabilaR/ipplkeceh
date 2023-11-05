@@ -205,62 +205,121 @@ class _MetodePembayaranPengantaranPageState
       ),
       body: Column(
         children: [
-          Text('Pilih Metode Pembayaran:'),
-          RadioListTile(
-            title: Text('Transfer'),
-            value: 'transfer',
-            groupValue: selectedPaymentMethod,
-            onChanged: (value) {
-              setState(() {
-                selectedPaymentMethod = value.toString();
-                if (selectedPaymentMethod == 'transfer') {
-                  _showBankOptions(context);
-                }
-              });
-            },
+          Card(
+            margin: EdgeInsets.all(16.0),
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Pilih Metode Pembayaran:',
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                  RadioListTile(
+                    title: Text('Transfer'),
+                    value: 'transfer',
+                    groupValue: selectedPaymentMethod,
+                    onChanged: (value) {
+                      setState(() {
+                        selectedPaymentMethod = value.toString();
+                        if (selectedPaymentMethod == 'transfer') {
+                          _showBankOptions(context);
+                        }
+                      });
+                    },
+                  ),
+                  RadioListTile(
+                    title: Text('COD (Bayar di Tempat)'),
+                    value: 'COD',
+                    groupValue: selectedPaymentMethod,
+                    onChanged: (value) {
+                      setState(() {
+                        selectedPaymentMethod = value.toString();
+                      });
+                    },
+                  ),
+                  SizedBox(height: 16.0),
+                  Text('Pilih Metode Pengantaran:',
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                  RadioListTile(
+                    title: Text('Ambil di Toko'),
+                    value: 'ambilToko',
+                    groupValue: selectedDeliveryMethod,
+                    onChanged: (value) {
+                      setState(() {
+                        selectedDeliveryMethod = value.toString();
+                      });
+                    },
+                  ),
+                  RadioListTile(
+                    title: Text('Antar oleh Kurir'),
+                    value: 'antarKurir',
+                    groupValue: selectedDeliveryMethod,
+                    onChanged: (value) {
+                      setState(() {
+                        selectedDeliveryMethod = value.toString();
+                      });
+                    },
+                  ),
+                ],
+              ),
+            ),
           ),
-          RadioListTile(
-            title: Text('COD (Bayar di Tempat)'),
-            value: 'COD',
-            groupValue: selectedPaymentMethod,
-            onChanged: (value) {
-              setState(() {
-                selectedPaymentMethod = value.toString();
-              });
+          if (selectedDeliveryMethod == 'antarKurir') ...[
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    _selectDate(context);
+                  },
+                  child: Text(
+                      'Pilih Tanggal: ${selectedDate.toLocal().day} ${_getMonth(selectedDate.toLocal().month)} ${selectedDate.toLocal().year}'),
+                ),
+                SizedBox(height: 16.0), // Tambahkan jarak vertical di sini
+              ],
+            ),
+          ],
+          ElevatedButton(
+            onPressed: () {
+              _showConfirmationDialog();
             },
+            child: Text('Konfirmasi'),
           ),
-          SizedBox(height: 16.0),
-          Text('Pilih Metode Pengantaran:'),
-          RadioListTile(
-            title: Text('Ambil di Toko'),
-            value: 'ambilToko',
-            groupValue: selectedDeliveryMethod,
-            onChanged: (value) {
-              setState(() {
-                selectedDeliveryMethod = value.toString();
-              });
-            },
-          ),
-          RadioListTile(
-            title: Text('Antar oleh Kurir'),
-            value: 'antarKurir',
-            groupValue: selectedDeliveryMethod,
-            onChanged: (value) {
-              setState(() {
-                selectedDeliveryMethod = value.toString();
-              });
-            },
-          ),
-          if (selectedDeliveryMethod == 'antarKurir')
-            ElevatedButton(
-              onPressed: () {
-                _selectDate(context);
-              },
-              child: Text(
-                  'Pilih Tanggal: ${selectedDate.toLocal()}'.split(' ')[0]),
-            )
         ],
       ),
     );
+  }
+
+  String _getMonth(int month) {
+    switch (month) {
+      case 1:
+        return 'Januari';
+      case 2:
+        return 'Februari';
+      case 3:
+        return 'Maret';
+      case 4:
+        return 'April';
+      case 5:
+        return 'Mei';
+      case 6:
+        return 'Juni';
+      case 7:
+        return 'Juli';
+      case 8:
+        return 'Agustus';
+      case 9:
+        return 'September';
+      case 10:
+        return 'Oktober';
+      case 11:
+        return 'November';
+      case 12:
+        return 'Desember';
+      default:
+        return '';
+    }
   }
 }

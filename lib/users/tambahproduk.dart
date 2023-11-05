@@ -16,6 +16,7 @@ class _TambahprodukPageState extends State<TambahprodukPage> {
   final ImagePicker _picker = ImagePicker();
   XFile? image;
   File? img;
+
   gallery() async {
     final XFile? _image = await _picker.pickImage(source: ImageSource.gallery);
     setState(() {
@@ -62,7 +63,7 @@ class _TambahprodukPageState extends State<TambahprodukPage> {
               SizedBox(height: 5.0),
               ElevatedButton(
                 onPressed: gallery,
-                child: Text('Upload'), // Ganti dengan tombol "Upload"
+                child: Text('Upload Gambar'),
               ),
               SizedBox(height: 16.0),
               if (image != null)
@@ -72,7 +73,10 @@ class _TambahprodukPageState extends State<TambahprodukPage> {
                 ),
               SizedBox(height: 16.0),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  // Simpan data produk dan gambar ke penyimpanan atau database
+                  // Pastikan untuk menangani penyimpanan gambar di sini
+                },
                 child: Text('Simpan Produk'),
               ),
             ],
