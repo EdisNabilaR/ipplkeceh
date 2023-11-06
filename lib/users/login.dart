@@ -11,8 +11,7 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  bool isPasswordVisible =
-      false; // Menyimpan status password terlihat/tersembunyi
+  bool isPasswordVisible = false;
 
   Future<void> _signIn() async {
     try {

@@ -277,7 +277,7 @@ class _MetodePembayaranPengantaranPageState
                   child: Text(
                       'Pilih Tanggal: ${selectedDate.toLocal().day} ${_getMonth(selectedDate.toLocal().month)} ${selectedDate.toLocal().year}'),
                 ),
-                SizedBox(height: 16.0), // Tambahkan jarak vertical di sini
+                SizedBox(height: 16.0), 
               ],
             ),
           ],

@@ -73,10 +73,7 @@ class _TambahprodukPageState extends State<TambahprodukPage> {
                 ),
               SizedBox(height: 16.0),
               ElevatedButton(
-                onPressed: () {
-                  // Simpan data produk dan gambar ke penyimpanan atau database
-                  // Pastikan untuk menangani penyimpanan gambar di sini
-                },
+                onPressed: () {},
                 child: Text('Simpan Produk'),
               ),
             ],
