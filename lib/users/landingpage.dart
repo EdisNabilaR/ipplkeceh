@@ -24,7 +24,7 @@ class _LandingPageState extends State<LandingPage> {
     return Scaffold(
       body: container[_bottomNavCurrentIndex],
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.green, // Warna hijau tua
+        selectedItemColor: Colors.green,
         type: BottomNavigationBarType.fixed,
         onTap: (index) {
           setState(() {
@@ -36,7 +36,7 @@ class _LandingPageState extends State<LandingPage> {
           BottomNavigationBarItem(
             activeIcon: Icon(
               Icons.home,
-              color: Colors.green, 
+              color: Colors.green,
             ),
             icon: Icon(
               Icons.home_outlined,
@@ -47,7 +47,7 @@ class _LandingPageState extends State<LandingPage> {
           BottomNavigationBarItem(
             activeIcon: Icon(
               Icons.shopping_cart,
-              color: Colors.green, // Warna hijau tua
+              color: Colors.green,
             ),
             icon: Icon(
               Icons.shopping_cart_outlined,
@@ -58,7 +58,7 @@ class _LandingPageState extends State<LandingPage> {
           BottomNavigationBarItem(
             activeIcon: Icon(
               Icons.person,
-              color: Colors.green, // Warna hijau tua
+              color: Colors.green,
             ),
             icon: Icon(
               Icons.person_outline,
@@ -69,7 +69,7 @@ class _LandingPageState extends State<LandingPage> {
           BottomNavigationBarItem(
             activeIcon: Icon(
               Icons.plus_one,
-              color: Colors.green, // Warna hijau tua
+              color: Colors.green,
             ),
             icon: Icon(
               Icons.plus_one_outlined,

@@ -16,7 +16,7 @@ class _AkunPageState extends State<AkunPage> {
   @override
   void initState() {
     super.initState();
-    // Load data profil dari SharedPreferences saat halaman dimuat
+
     loadProfilData();
   }
 
@@ -30,13 +30,11 @@ class _AkunPageState extends State<AkunPage> {
   }
 
   void _simpanProfil() async {
-    // Simpan data profil ke SharedPreferences
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString('nama', _namaController.text);
     prefs.setString('email', _emailController.text);
     prefs.setString('alamat', _alamatController.text);
 
-    // Tampilkan pesan Snackbar bahwa profil telah disimpan
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
@@ -45,7 +43,6 @@ class _AkunPageState extends State<AkunPage> {
       ),
     );
 
-    // Keluar dari mode pengeditan
     setState(() {
       isEditing = false;
     });
