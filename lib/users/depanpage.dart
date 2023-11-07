@@ -8,12 +8,12 @@ class DepanPage extends StatefulWidget {
 
 class _DepanPageState extends State<DepanPage> {
   final List<Product> products = [
-    Product(
-      name: 'Kangkung',
-      description: 'Toko Sayur Berkah, KM 15',
+     Product(
+      name: 'Brokoli',
+      description: 'Toko Jaya, KM 10',
       imageUrl:
-          'https://i0.wp.com/umsu.ac.id/berita/wp-content/uploads/2023/07/Kangkung.jpg?fit=1200%2C900&ssl=1/product1.jpg',
-      price: 5.000,
+          'https://bibitbunga.com/wp-content/uploads/2016/10/manfaat-brokoli?fit=1200%2C900&ssl=1/product1.jpg',
+      price: 10.000,
     ),
     Product(
       name: 'Kangkung',
@@ -22,48 +22,55 @@ class _DepanPageState extends State<DepanPage> {
           'https://i0.wp.com/umsu.ac.id/berita/wp-content/uploads/2023/07/Kangkung.jpg?fit=1200%2C900&ssl=1/product1.jpg',
       price: 5.000,
     ),
-    Product(
-      name: 'Kangkung',
-      description: 'Toko Sayur Berkah, KM 15',
-      imageUrl:
-          'https://i0.wp.com/umsu.ac.id/berita/wp-content/uploads/2023/07/Kangkung.jpg?fit=1200%2C900&ssl=1/product1.jpg',
-      price: 5.000,
-    ),
-    Product(
-      name: 'Kangkung',
-      description: 'Toko Sayur Berkah, KM 15',
-      imageUrl:
-          'https://i0.wp.com/umsu.ac.id/berita/wp-content/uploads/2023/07/Kangkung.jpg?fit=1200%2C900&ssl=1/product1.jpg',
-      price: 5.000,
-    ),
-    Product(
-      name: 'Kangkung',
-      description: 'Toko Sayur Berkah, KM 15',
-      imageUrl:
-          'https://i0.wp.com/umsu.ac.id/berita/wp-content/uploads/2023/07/Kangkung.jpg?fit=1200%2C900&ssl=1/product1.jpg',
-      price: 5.000,
-    ),
-    Product(
-      name: 'Kangkung',
-      description: 'Toko Sayur Berkah, KM 15',
-      imageUrl:
-          'https://i0.wp.com/umsu.ac.id/berita/wp-content/uploads/2023/07/Kangkung.jpg?fit=1200%2C900&ssl=1/product1.jpg',
-      price: 5.000,
-    ),
-    Product(
-      name: 'Kangkung',
-      description: 'Toko Sayur Berkah, KM 15',
-      imageUrl:
-          'https://i0.wp.com/umsu.ac.id/berita/wp-content/uploads/2023/07/Kangkung.jpg?fit=1200%2C900&ssl=1/product1.jpg',
-      price: 5.000,
-    ),
-    Product(
-      name: 'Kangkung',
-      description: 'Toko Sayur Berkah, KM 15',
-      imageUrl:
-          'https://i0.wp.com/umsu.ac.id/berita/wp-content/uploads/2023/07/Kangkung.jpg?fit=1200%2C900&ssl=1/product1.jpg',
-      price: 5.000,
-    ),
+    // Product(
+    //   name: 'Kangkung',
+    //   description: 'Toko Sayur Berkah, KM 15',
+    //   imageUrl:
+    //       'https://i0.wp.com/umsu.ac.id/berita/wp-content/uploads/2023/07/Kangkung.jpg?fit=1200%2C900&ssl=1/product1.jpg',
+    //   price: 5.000,
+    // ),
+    // Product(
+    //   name: 'Kangkung',
+    //   description: 'Toko Sayur Berkah, KM 15',
+    //   imageUrl:
+    //       'https://i0.wp.com/umsu.ac.id/berita/wp-content/uploads/2023/07/Kangkung.jpg?fit=1200%2C900&ssl=1/product1.jpg',
+    //   price: 5.000,
+    // ),
+    // Product(
+    //   name: 'Kangkung',
+    //   description: 'Toko Sayur Berkah, KM 15',
+    //   imageUrl:
+    //       'https://i0.wp.com/umsu.ac.id/berita/wp-content/uploads/2023/07/Kangkung.jpg?fit=1200%2C900&ssl=1/product1.jpg',
+    //   price: 5.000,
+    // ),
+    // Product(
+    //   name: 'Kangkung',
+    //   description: 'Toko Sayur Berkah, KM 15',
+    //   imageUrl:
+    //       'https://i0.wp.com/umsu.ac.id/berita/wp-content/uploads/2023/07/Kangkung.jpg?fit=1200%2C900&ssl=1/product1.jpg',
+    //   price: 5.000,
+    // ),
+    // Product(
+    //   name: 'Kangkung',
+    //   description: 'Toko Sayur Berkah, KM 15',
+    //   imageUrl:
+    //       'https://i0.wp.com/umsu.ac.id/berita/wp-content/uploads/2023/07/Kangkung.jpg?fit=1200%2C900&ssl=1/product1.jpg',
+    //   price: 5.000,
+    // ),
+    // Product(
+    //   name: 'Kangkung',
+    //   description: 'Toko Sayur Berkah, KM 15',
+    //   imageUrl:
+    //       'https://i0.wp.com/umsu.ac.id/berita/wp-content/uploads/2023/07/Kangkung.jpg?fit=1200%2C900&ssl=1/product1.jpg',
+    //   price: 5.000,
+    // ),
+    // Product(
+    //   name: 'Kangkung',
+    //   description: 'Toko Sayur Berkah, KM 15',
+    //   imageUrl:
+    //       'https://i0.wp.com/umsu.ac.id/berita/wp-content/uploads/2023/07/Kangkung.jpg?fit=1200%2C900&ssl=1/product1.jpg',
+    //   price: 5.000,
+    // ),
     Product(
       name: 'Kangkung',
       description: 'Toko Sayur Berkah, KM 15',

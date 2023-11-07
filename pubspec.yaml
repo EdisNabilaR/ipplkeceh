@@ -67,6 +67,18 @@ flutter:
     - assets/logo veggieshop.png
     - assets/kamera.jpg
     - assets/kammera.jpg
+    - assets/bayam.jpg
+    - assets/brokoli.jpg
+    - assets/kangkung.jpg
+    - assets/kembangkol.jpg
+    - assets/kol.jpg
+    - assets/kentang.jpg
+    - assets/labu.jpg
+    - assets/lobakputih.jpg
+    - assets/selada.jpg
+    - assets/terong.jpg
+    - assets/tomat.jpg
+    - assets/wortel.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
