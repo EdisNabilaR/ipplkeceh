@@ -1,6 +1,9 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:aplikasiverggieshop/users/beranda.dart';
 
 class TambahprodukPage extends StatefulWidget {
   @override
@@ -17,6 +20,17 @@ class _TambahprodukPageState extends State<TambahprodukPage> {
   XFile? image;
   File? img;
 
+  // Inisialisasi Firebase
+  Future<void> initializeFirebase() async {
+    await Firebase.initializeApp();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    initializeFirebase();
+  }
+
   gallery() async {
     final XFile? _image = await _picker.pickImage(source: ImageSource.gallery);
     setState(() {
@@ -25,6 +39,34 @@ class _TambahprodukPageState extends State<TambahprodukPage> {
   }
 
   String _gambarProduk = '';
+
+  Future<void> _simpanProduk() async {
+    // Ambil referensi ke koleksi 'produk' di Firestore
+    CollectionReference produkCollection =
+        FirebaseFirestore.instance.collection('produk');
+
+    // Menambahkan data produk ke Firestore
+    await produkCollection.add({
+      'nama': _namaProdukController.text,
+      'deskripsi': _deskripsiProdukController.text,
+      'stok': int.parse(_stokController.text),
+      'harga': int.parse(_hargaController.text),
+      'gambar': _gambarProduk, // Ganti dengan URL gambar yang sesuai
+    });
+
+    // Tampilkan snackbar untuk memberi tahu pengguna bahwa produk berhasil ditambahkan
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Produk berhasil ditambahkan!'),
+      ),
+    );
+
+    // Navigasikan pengguna ke halaman beranda dan ganti seluruh tumpukan halaman
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => Beranda()), // Ganti dengan halaman beranda yang sesuai
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +115,7 @@ class _TambahprodukPageState extends State<TambahprodukPage> {
                 ),
               SizedBox(height: 16.0),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: _simpanProduk,
                 child: Text('Simpan Produk'),
               ),
             ],

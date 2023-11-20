@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:aplikasiverggieshop/users/depanpage.dart';
 import 'package:aplikasiverggieshop/users/kategoripage.dart';
 import 'package:aplikasiverggieshop/users/akunpage.dart';
+import 'package:aplikasiverggieshop/users/peta.dart';
 
 class Beranda extends StatefulWidget {
   @override
@@ -31,16 +32,22 @@ class _BerandaState extends State<Beranda> with SingleTickerProviderStateMixin {
   }
 
   void _onMenuItemSelected(String value) {
-    if (value == 'ubah_akun') {
+    if (value == 'Ubah Akun') {
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => AkunPage()),
       );
-    } else if (value == 'logout') {
+    } else if (value == 'Logout') {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
             builder: (context) => RegisterPage()), 
+      );
+    } else if (value == 'Peta') {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+            builder: (context) => Peta()), 
       );
     }
   }
@@ -70,7 +77,7 @@ class _BerandaState extends State<Beranda> with SingleTickerProviderStateMixin {
           PopupMenuButton<String>(
             onSelected: _onMenuItemSelected,
             itemBuilder: (BuildContext context) {
-              return {'Ubah Profil', 'Logout'}.map((String choice) {
+              return {'Ubah Akun', 'Logout', 'Peta'}.map((String choice) {
                 return PopupMenuItem<String>(
                   value: choice,
                   child: Text(choice),
@@ -92,6 +99,9 @@ class _BerandaState extends State<Beranda> with SingleTickerProviderStateMixin {
             Tab(
               text: 'Kategori',
             ),
+            // Tab(
+            //   text: 'Peta',
+            // ),
           ],
         ),
       ),
@@ -101,6 +111,7 @@ class _BerandaState extends State<Beranda> with SingleTickerProviderStateMixin {
         children: [
           DepanPage(),
           KategoriPage(),
+          // Peta(),
         ],
       ),
     );

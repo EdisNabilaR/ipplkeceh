@@ -11,83 +11,30 @@ class KategoriPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                'Kategori Sayur Buah',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-            ),
-            Container(
-              height: 200,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: <Widget>[
-                  KategoriCard('Labu', 'https://blogpictures.99.co/manfaat-labu-kuning.jpg')
-                  // KategoriCard('Labu', 'assets/labu.jpg'),
-                  // KategoriCard('Terong', 'assets/terong.jpg'),
-                  // KategoriCard('Tomat', 'assets/tomat.jpg'),
-                  // // Tambahkan sayur oranye lainnya di sini
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                'Kategori Sayur Bunga',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-            ),
-            Container(
-              height: 200,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: <Widget>[
-                  // KategoriCard('Brokoli', 'assets/brokoli.jpg'),
-                  // KategoriCard('Kembang Kol', 'assets/kembangkol.jpg'),
-                  // Tambahkan sayur hijau lainnya di sini
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                'Kategori Sayur Daun',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-            ),
-            Container(
-              height: 200,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: <Widget>[
-                  // KategoriCard('Bayam', 'assets/bayam.jpg'),
-                  // KategoriCard('Kol', 'assets/kol.jpg'),
-                  // KategoriCard('Kangkung', 'assets/kangkung.jpg'),
-                  // KategoriCard('Selada', 'assets/selada.jpg'),
-                  // Tambahkan sayur oranye lainnya di sini
-                ],
-              ),
-            ),
-             Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                'Kategori Sayur Umbi',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-            ),
-            Container(
-              height: 200,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: <Widget>[
-                  // KategoriCard('Kentang', 'assets/kentang.jpg'),
-                  // KategoriCard('Lobak Putih', 'assets/lobakputih.jpg'),
-                  // KategoriCard('Wortel', 'assets/wortel.jpg'),
-                  // Tambahkan sayur oranye lainnya di sini
-                ],
-              ),
-            ),
+            KategoriSection('Kategori Sayur Buah', [
+              KategoriCard('Labu', 'assets/labu.jpg'),
+              KategoriCard('Terong', 'assets/terong.jpg'),
+              KategoriCard('Tomat', 'assets/tomat.jpg'),
+              // Tambahkan sayur oranye lainnya di sini
+            ]),
+            KategoriSection('Kategori Sayur Bunga', [
+              KategoriCard('Brokoli', 'assets/brokoli.jpg'),
+              KategoriCard('Kembang Kol', 'assets/kembangkol.jpg'),
+              // Tambahkan sayur hijau lainnya di sini
+            ]),
+            KategoriSection('Kategori Sayur Daun', [
+              KategoriCard('Bayam', 'assets/bayam.jpg'),
+              KategoriCard('Kol', 'assets/kol.jpg'),
+              KategoriCard('Kangkung', 'assets/kangkung.jpg'),
+              KategoriCard('Selada', 'assets/selada.jpg'),
+              // Tambahkan sayur oranye lainnya di sini
+            ]),
+            KategoriSection('Kategori Sayur Umbi', [
+              KategoriCard('Kentang', 'assets/kentang.jpg'),
+              KategoriCard('Lobak Putih', 'assets/lobakputih.jpg'),
+              KategoriCard('Wortel', 'assets/wortel.jpg'),
+              // Tambahkan sayur oranye lainnya di sini
+            ]),
           ],
         ),
       ),
@@ -95,15 +42,42 @@ class KategoriPage extends StatelessWidget {
   }
 }
 
+class KategoriSection extends StatelessWidget {
+  final String title;
+  final List<Widget> kategoriCards;
+
+  KategoriSection(this.title, this.kategoriCards);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            title,
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+          Container(
+            height: 300,
+            width: double.infinity, // Expanded akan memanfaatkan lebar penuh
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: kategoriCards,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class KategoriCard extends StatelessWidget {
   final String title;
-  // final String imageAsset;
   final String imageUrl;
 
-  // KategoriCard(this.title, this.imageAsset);
   KategoriCard(this.title, this.imageUrl);
-  
-  // String get imageUrl => null;
 
   @override
   Widget build(BuildContext context) {
@@ -111,11 +85,9 @@ class KategoriCard extends StatelessWidget {
       margin: EdgeInsets.all(8.0),
       child: Column(
         children: <Widget>[
-          // Image.asset(
-          Image.network(
-            // imageAsset,
+          Image.asset(
             imageUrl,
-            height: 120,
+            height: 200,
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -129,3 +101,4 @@ class KategoriCard extends StatelessWidget {
     );
   }
 }
+
