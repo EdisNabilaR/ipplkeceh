@@ -20,66 +20,71 @@ class _PetaState extends State<Peta> {
   }
 
   void _addMarker(LatLng position) async {
-  final String markerIdValue = DateTime.now().millisecondsSinceEpoch.toString();
-  final MarkerId markerId = MarkerId(markerIdValue);
+    final String markerIdValue = DateTime.now().millisecondsSinceEpoch.toString();
+    final MarkerId markerId = MarkerId(markerIdValue);
 
-  try {
-    // Mendapatkan nama lokasi berdasarkan koordinat
-    List<Placemark> placemarks = await placemarkFromCoordinates(position.latitude, position.longitude);
-    String locationName = placemarks.isNotEmpty ? placemarks[0].name ?? '' : '';
+    try {
+      // Mendapatkan nama lokasi berdasarkan koordinat
+      List<Placemark> placemarks = await placemarkFromCoordinates(position.latitude, position.longitude);
+      String locationName = placemarks.isNotEmpty ? placemarks[0].name ?? '' : '';
 
-    setState(() {
-      _markers.add(
-        Marker(
-          markerId: markerId,
-          position: position,
-          infoWindow: InfoWindow(
-            title: 'Custom Marker $markerIdValue',
-            snippet: 'Deskripsi Marker $markerIdValue',
-          ),
-          icon: BitmapDescriptor.defaultMarker,
-        ),
-      );
+      setState(() {
+        // Membersihkan set marker sebelum menambahkan yang baru
+        _markers.clear();
 
-      _selectedLocations.add(position);
-    });
-
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Lokasi Dipilih'),
-          content: Text('Nama Lokasi: $locationName\nKoordinat: $position'),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: const Text('OK'),
+        _markers.add(
+          Marker(
+            markerId: markerId,
+            position: position,
+            infoWindow: InfoWindow(
+              title: 'Custom Marker $markerIdValue',
+              snippet: 'Deskripsi Marker $markerIdValue',
             ),
-          ],
+            icon: BitmapDescriptor.defaultMarker,
+          ),
         );
-      },
-    );
-  } catch (e) {
-    print('Error: $e');
-    // Handle error accordingly (show a message, log, etc.)
+
+        _selectedLocations.add(position);
+      });
+
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text('Lokasi Dipilih'),
+            content: Text('Nama Lokasi: $locationName\nKoordinat: $position'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: const Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+    } catch (e) {
+      print('Error: $e');
+      // Handle error accordingly (show a message, log, etc.)
+    }
   }
-}
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Maps Sample App'),
+        title: const Text('Peta'),
         backgroundColor: Colors.green[700],
         actions: [
           IconButton(
             icon: Icon(Icons.home),
+            // Mengganti Navigator.pop(context)
             onPressed: () {
-              Navigator.pushReplacementNamed(context, '/beranda');
-              // Add navigation logic to go to the home page
-              // For example: Navigator.pushReplacementNamed(context, '/home');
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => Beranda()),
+              );
             },
           ),
         ],
@@ -99,4 +104,3 @@ class _PetaState extends State<Peta> {
   }
 }
 
-// Add your other code here if needed

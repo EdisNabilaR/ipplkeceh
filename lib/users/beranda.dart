@@ -1,5 +1,6 @@
 import 'package:aplikasiverggieshop/users/register.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:aplikasiverggieshop/users/depanpage.dart';
 import 'package:aplikasiverggieshop/users/kategoripage.dart';
 import 'package:aplikasiverggieshop/users/akunpage.dart';
@@ -99,9 +100,6 @@ class _BerandaState extends State<Beranda> with SingleTickerProviderStateMixin {
             Tab(
               text: 'Kategori',
             ),
-            // Tab(
-            //   text: 'Peta',
-            // ),
           ],
         ),
       ),
@@ -111,7 +109,6 @@ class _BerandaState extends State<Beranda> with SingleTickerProviderStateMixin {
         children: [
           DepanPage(),
           KategoriPage(),
-          // Peta(),
         ],
       ),
     );

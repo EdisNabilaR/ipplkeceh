@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:aplikasiverggieshop/users/beranda.dart';
 
 class TambahprodukPage extends StatefulWidget {
   @override
@@ -54,18 +53,8 @@ class _TambahprodukPageState extends State<TambahprodukPage> {
       'gambar': _gambarProduk, // Ganti dengan URL gambar yang sesuai
     });
 
-    // Tampilkan snackbar untuk memberi tahu pengguna bahwa produk berhasil ditambahkan
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Produk berhasil ditambahkan!'),
-      ),
-    );
-
-    // Navigasikan pengguna ke halaman beranda dan ganti seluruh tumpukan halaman
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => Beranda()), // Ganti dengan halaman beranda yang sesuai
-    );
+    // Kembali ke halaman sebelumnya atau lakukan navigasi ke halaman lain
+    Navigator.pop(context);
   }
 
   @override
@@ -102,7 +91,7 @@ class _TambahprodukPageState extends State<TambahprodukPage> {
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(labelText: 'Harga'),
               ),
-              SizedBox(height: 5.0),
+              SizedBox(height: 16.0),
               ElevatedButton(
                 onPressed: gallery,
                 child: Text('Upload Gambar'),
