@@ -1,6 +1,4 @@
-import 'package:aplikasiverggieshop/users/register.dart';
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:aplikasiverggieshop/users/depanpage.dart';
 import 'package:aplikasiverggieshop/users/kategoripage.dart';
 import 'package:aplikasiverggieshop/users/akunpage.dart';
@@ -13,23 +11,28 @@ class Beranda extends StatefulWidget {
 
 class _BerandaState extends State<Beranda> with SingleTickerProviderStateMixin {
   late final TabController _tabController;
-  int _activeTabIndex = 0;
   TextEditingController _searchController = TextEditingController();
+  late List<Product> _allProducts;
+  late List<Product> _displayedProducts;
 
   @override
   void initState() {
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
+    _allProducts = List.from(allProducts);
+    _displayedProducts = List.from(allProducts);
   }
 
-  void _setActiveTabIndex() {
-    _activeTabIndex = _tabController.index;
+  void _updateDisplayedProducts(String query) {
+    setState(() {
+      _displayedProducts = _allProducts
+          .where((product) => product.name.toLowerCase().contains(query.toLowerCase()))
+          .toList();
+    });
   }
 
-  @override
-  void dispose() {
-    _searchController.dispose();
-    super.dispose();
+  void _onSearchTextChanged(String value) {
+    _updateDisplayedProducts(value);
   }
 
   void _onMenuItemSelected(String value) {
@@ -39,16 +42,11 @@ class _BerandaState extends State<Beranda> with SingleTickerProviderStateMixin {
         MaterialPageRoute(builder: (context) => AkunPage()),
       );
     } else if (value == 'Logout') {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-            builder: (context) => RegisterPage()), 
-      );
+      Navigator.popUntil(context, ModalRoute.withName('/login'));
     } else if (value == 'Peta') {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(
-            builder: (context) => Peta()), 
+        MaterialPageRoute(builder: (context) => Peta()),
       );
     }
   }
@@ -60,7 +58,7 @@ class _BerandaState extends State<Beranda> with SingleTickerProviderStateMixin {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: TextField(
           controller: _searchController,
-          onChanged: (value) {},
+          onChanged: _onSearchTextChanged,
           style: TextStyle(fontSize: 15),
           decoration: InputDecoration(
             hintText: 'Search',
@@ -68,7 +66,7 @@ class _BerandaState extends State<Beranda> with SingleTickerProviderStateMixin {
             contentPadding: const EdgeInsets.symmetric(vertical: 10.0),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: new BorderSide(color: Colors.white),
+              borderSide: BorderSide(color: Colors.white),
             ),
             fillColor: Color(0xfff3f3f4),
             filled: true,
@@ -107,7 +105,7 @@ class _BerandaState extends State<Beranda> with SingleTickerProviderStateMixin {
         physics: NeverScrollableScrollPhysics(),
         controller: _tabController,
         children: [
-          DepanPage(),
+          DepanPage(products: _displayedProducts),
           KategoriPage(),
         ],
       ),

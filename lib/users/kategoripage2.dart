@@ -1,3 +1,4 @@
+// ini cadangan pertama dari kode yang ada
 // import 'package:flutter/material.dart';
 
 // class KategoriPage extends StatelessWidget {

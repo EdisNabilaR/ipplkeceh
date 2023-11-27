@@ -1,6 +1,8 @@
+// ini cadangan pertama dari kode yang ada
 // import 'package:flutter/material.dart';
 // import 'package:google_maps_flutter/google_maps_flutter.dart';
 // import 'package:geocoding/geocoding.dart';
+// import 'package:aplikasiverggieshop/users/beranda.dart';
 
 // class Peta extends StatefulWidget {
 //   @override
@@ -19,9 +21,10 @@
 //   }
 
 //   void _addMarker(LatLng position) async {
-//     final String markerIdValue = DateTime.now().millisecondsSinceEpoch.toString();
-//     final MarkerId markerId = MarkerId(markerIdValue);
+//   final String markerIdValue = DateTime.now().millisecondsSinceEpoch.toString();
+//   final MarkerId markerId = MarkerId(markerIdValue);
 
+//   try {
 //     // Mendapatkan nama lokasi berdasarkan koordinat
 //     List<Placemark> placemarks = await placemarkFromCoordinates(position.latitude, position.longitude);
 //     String locationName = placemarks.isNotEmpty ? placemarks[0].name ?? '' : '';
@@ -59,7 +62,11 @@
 //         );
 //       },
 //     );
+//   } catch (e) {
+//     print('Error: $e');
+//     // Handle error accordingly (show a message, log, etc.)
 //   }
+// }
 
 //   @override
 //   Widget build(BuildContext context) {
@@ -67,6 +74,16 @@
 //       appBar: AppBar(
 //         title: const Text('Maps Sample App'),
 //         backgroundColor: Colors.green[700],
+//         actions: [
+//           IconButton(
+//             icon: Icon(Icons.home),
+//             onPressed: () {
+//               Navigator.pushReplacementNamed(context, '/beranda');
+//               // Add navigation logic to go to the home page
+//               // For example: Navigator.pushReplacementNamed(context, '/home');
+//             },
+//           ),
+//         ],
 //       ),
 //       body: GoogleMap(
 //         onMapCreated: _onMapCreated,
@@ -82,3 +99,5 @@
 //     );
 //   }
 // }
+
+// // Add your other code here if needed

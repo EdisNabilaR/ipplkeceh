@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:aplikasiverggieshop/users/peta.dart';
 
-void main() {
-  runApp(MyApp());
-}
+// void main() {
+//   runApp(MyApp());
+// }
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: KeranjangPage(),
-    );
-  }
-}
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: KeranjangPage(),
+//     );
+//   }
+// }
 
 class KeranjangPage extends StatefulWidget {
   @override
